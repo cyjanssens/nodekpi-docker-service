@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  api:
+    image: nodepki-api:7.0
+    environment:
+      - ROOT_PASSPHRASE="123456789"
+      - ROOT_CA_COMMON_NAME="rootname"
+      - INTERMEDIATE_PASSPHRASE="123456789" 
+      - INTERMEDIATE_CA_COMMON_NAME="intermediatename"
+      - OCSP_PASSPHRASE="123456789"
+      - COUNTRY_CODE=WORLD
+      - STATE_NAME=the
+      - LOCALITY_NAME=in
+      - ORGANIZATION_NAME=somewhere
+  web:
+    image: nodepki-webclient:7.0
+    environment: 
+      - CA_API_SERVER_URL=api
+      - CA_WEBCLIENT_HTTP_URL="http://127.0.0.1:5000"
+      - COUNTRY_CODE=WORLD
+      - STATE_NAME=the
+      - LOCALITY_NAME=in
+      - ORGANIZATION_NAME=somewhere
+    ports:
+      - 5000:5000
