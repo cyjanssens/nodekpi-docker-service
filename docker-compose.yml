@@ -13,6 +13,8 @@ services:
       - STATE_NAME=the
       - LOCALITY_NAME=in
       - ORGANIZATION_NAME=somewhere
+      - WEBUI_USER=admin
+      - WEBUI_PASS=admin
   web:
     image: nodepki-webclient:7.0
     environment: 
